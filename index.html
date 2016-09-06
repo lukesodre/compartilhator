@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Concurso IcoreShop</title>
+
+	<link rel="stylesheet" href="public/assets/demo.css">
+	<link rel="stylesheet" href="public/assets/form-basic.css">
+	<link rel="stylesheet" href="public/node_modules/angular-material/angular-material.css">
+
+	<style>
+		md-input-container {
+			width: 90%;
+		}
+	</style>
+
+</head>
+
+<body ng-app="concurso">
+
+	<form ng-controller="concursoCtrl as ctrl" class="md-padding form-basic" ng-cloak method="post" action="adicionarParticipante"
+		enctype="application/x-www-form-urlencoded">
+		<div>
+			<img src="iphone.jpg" style="width:100%" alt="iphone">
+
+		</div>
+		<div class="form-title-row">
+			<h1>Dados para o Sorteio!</h1>
+			<h2>Atenção! o resultado será divulgado por SMS</h2>
+		</div>
+
+		<div class="form-row">
+			<md-input-container>
+				<label>Nome Completo</label>
+				<input type="tel">
+			</md-input-container>
+		</div>
+
+		<div class="form-row">
+			<md-input-container>
+				<label>Email</label>
+				<input type="email">
+			</md-input-container>
+		</div>
+
+		<div class="form-row">
+			<md-input-container>
+				<label>Telefone</label>
+				<input type="tel">
+			</md-input-container>
+		</div>
+
+		<div class="form-row">
+			<md-input-container>
+				<label>Celular/Whatsapp</label>
+				<input>
+			</md-input-container>
+		</div>
+
+		<div class="form-row">
+			<md-input-container>
+				<label>Estado</label>
+				<md-select ng-model="ctrl.estado" md-selected-text="pegaCidade()">
+					<md-option ng-repeat="estado in ctrl.estados" value="{{estado.nome}}">
+						{{estado.nome}}
+					</md-option>
+				</md-select>
+			</md-input-container>
+		</div>
+
+		<div class="form-row">
+			<md-input-container>
+				<label>Cidade</label>
+				<md-select ng-model="ctrl.cidade" ng-disabled="ctrl.cidade == undefined">
+					<md-option ng-repeat="cidade in ctrl.cidades" value="{{cidade}}">
+						{{cidade}}
+					</md-option>
+				</md-select>
+			</md-input-container>
+		</div>
+		<div class="form-row">
+			<md-input-container>
+				<label>Bairro</label>
+				<input>
+			</md-input-container>
+		</div>
+
+
+		<div class="form-row">
+			<label>
+                    <h4>Por que você merece ganhar?</h4>
+                    <h6>Escreva em 200 caracteres!</h6>
+                    <textarea name="motivo"></textarea>
+                </label>
+		</div>
+
+		<div class="form-row">
+			<label>
+                    <span>Eu aceito os termos da promoção</span>
+                    <input type="checkbox" name="checkbox" checked>
+                </label>
+		</div>
+
+
+		<div class="form-row">
+			<button type="submit">Enviar e concorrer!</button>
+		</div>
+
+	</form>
+
+
+	</div>
+	<script src="public/estados.js"></script>
+	<script src="public/node_modules/angular/angular.js"></script>
+	<script src="public/node_modules/angular-aria/angular-aria.js"></script>
+	<script src="public/node_modules/angular-animate/angular-animate.js"></script>
+	<script src="public/node_modules/angular-material/angular-material.js"></script>
+	<script src="public/controller.js"></script>
+
+
+</body>
+
+</html>

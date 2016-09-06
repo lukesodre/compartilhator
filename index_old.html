@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Basic Form</title>
+
+    <link rel="stylesheet" href="assets/demo.css">
+    <link rel="stylesheet" href="assets/form-basic.css">
+
+</head>
+
+
+
+
+
+<div class="main-content">
+
+    <!-- You only need this form and the form-basic.css -->
+
+    <form class="form-basic" method="post" action="adicionarParticipante" enctype="application/x-www-form-urlencoded">
+        <div>
+            <img src="iphone.jpg" style="width:100%" alt="iphone">
+
+        </div>
+        <div class="form-title-row">
+            <h1>Dados para o Sorteio!</h1>
+        </div>
+
+        <div class="form-row">
+            <label>
+                    <span>Nome completo</span>
+                    <input type="text" name="nome">
+                </label>
+        </div>
+
+        <div class="form-row">
+            <label>
+                    <span>Email</span>
+                    <input type="email" name="email">
+                </label>
+        </div>
+
+        <div class="form-row">
+            <label>
+                    <span>Telefone</span>
+                    <input type="tel" name="telefone">
+                </label>
+        </div>
+
+        <div class="form-row">
+            <label>
+                    <span>Celular/Whatsapp</span>
+                    <input type="cel" name="celular">
+                </label>
+        </div>
+
+      <div class="form-row">
+            <label>
+                    <span>Estado</span>
+                    <input type="text" name="estado">
+                </label>
+        </div>
+        
+        <div class="form-row">
+            <label>
+                    <span>Cidade</span>
+                    <input type="text" name="cidade">
+                </label>
+        </div>
+          <div class="form-row">
+            <label>
+                    <span>Bairro</span>
+                    <input type="text" name="bairro">
+                </label>
+        </div>
+
+
+        <div class="form-row">
+            <label>
+                    <span>Por que você merece ganhar?</span>
+                    <span>Escreva em 200 caracteres!</span>
+                    <textarea name="motivo"></textarea>
+                </label>
+        </div>
+
+        <div class="form-row">
+            <label>
+                    <span>Eu aceito os termos da promoção</span>
+                    <input type="checkbox" name="checkbox" checked>
+                </label>
+        </div>
+
+
+        <div class="form-row">
+            <button type="submit">Enviar e concorrer!</button>
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+
+</html>
