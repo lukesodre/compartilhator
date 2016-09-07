@@ -20,7 +20,7 @@
     // for FB.getLoginStatus().
     if (response.status === 'connected') {
       // Logged into your app and Facebook.
-      testAPI();
+      testAPI(response.authResponse.accessToken);
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
       document.getElementById('status').innerHTML = 'Please log ' +
@@ -74,16 +74,16 @@
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js";
+    js.src = "//connect.facebook.net/pt_BR/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 
 
   // Here we run a very simple test of the Graph API after login is
   // successful.  See statusChangeCallback() for when this call is made.
-  function testAPI() {
+  function testAPI(token) {
     console.log('Welcome!  Fetching your information.... ');
-      // FB.api('/1169083973162925/feed', 'post', {link: 'https://expressjs.com/en/starter/hello-world.html'},function(response){console.log("banana",response)});
+      // FB.api('/me/feed', 'post', {link: 'https://expressjs.com/en/starter/hello-world.html'},function(response){console.log("banana",response)});
       
       
       
@@ -91,6 +91,7 @@
       
     FB.api('/me', function(response) {
       console.log('Successful login for: ' + response);
+      response.token = token;
       console.log(response)
       
       

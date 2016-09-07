@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script><title>Facebook Login JavaScript Example</title>
+<meta charset="UTF-8">
+</head>
+<body>
+
+<h1>Bem vindo ao compartilhador<h1>
+
+<h2>Usuarios Conectados</h2>
+
+<ul>
+
+<% for(var i=0; i<pessoas.length; i++) {%>
+   <li><%= pessoas[i].nome %> <button id=<%= pessoas[i].token %> >Compartilhar</button></li>
+<% } %>
+
+</ul>
+<p>Link para compartilhar:</p>
+<input id='link' type="text" name="lastname" value="Link">
+<br><br>
+
+  
+<script>
+   $('button').click(function(e){
+       var token = e.target.id;
+       var link = $('#link').val();
+        FB.api('/me/feed', 'post', {access_token:token
+      ,link: link },function(response){console.log("banana",response)});
+   
+   })
+
+  window.fbAsyncInit = function() {
+  FB.init({
+    appId      : '1392536030762771',
+    cookie     : true,  // enable cookies to allow the server to access 
+                        // the session
+    xfbml      : true,  // parse social plugins on this page
+    version    : 'v2.5' // use graph api version 2.5
+  });
+  
+ 
+
+
+  };
+
+  // Load the SDK asynchronously
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+
+
+  // Here we run a very simple test of the Graph API after login is
+  // successful.  See statusChangeCallback() for when this call is made.
+  function testAPI() {
+    console.log('Welcome!  Fetching your information.... ');
+  }
+  
+  
+  $('#botao').click(function(){
+   FB.getLoginStatus(function(response) {
+       console.log('lucass1',response)
+    // statusChangeCallback(response);
+  });
+      FB.api('/me/feed', 'post', {access_token:"EAATygQ9zVxMBAKuVzdsXx2SBdeEz0ftip8UbStaL7MDJJbIrQrxEhwFQFycffeZBmgkNsWwoCptF7YJFOghZAcR3kn1KH2onWoqw49HW7KWXSvLwOzhN5ifYu0KNbOJnRqUaeAZAW64MQGZAyekGK76WZCMfIZAyfUeEUsEx3NrwZDZD"
+      ,link: 'https://expressjs.com/en/starter/hello-world.html'},function(response){console.log("banana",response)});
+   
+   FB.api(
+    '/me',
+    'GET',
+    {},
+        function(response) {
+            console.log('lucass',response)
+        }
+    );   
+  });
+  
+</script>
+
+<!--
+  Below we include the Login Button social plugin. This button uses
+  the JavaScript SDK to present a graphical Login button that triggers
+  the FB.login() function when clicked.
+-->
+
+
+
+
+
+
+
+<div id="status">
+</div>
+</body>
+</html>

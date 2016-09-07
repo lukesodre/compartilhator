@@ -12,6 +12,12 @@ db.once('open', function () {
 });
 
 
+var usuarioFacebookSchema = new Schema({
+    nome: String,
+    id: { type: Number, unique: true },
+    token: String
+})
+
 var usuarioSchema = new Schema({
     nome: String,
     email: String,
@@ -25,6 +31,13 @@ var usuarioSchema = new Schema({
 });
 
 var usuarioModel = mongoose.model('usuario', usuarioSchema)
+var usuarioFacebookModel = mongoose.model('usuarioFacebook', usuarioFacebookSchema);
+
+var adicionaUsuarioFacebook = function (usuarioFacebook) {
+    usuarioFacebookModel.findOneAndUpdate({ nome: usuarioFacebook.nome }, usuarioFacebook, { upsert: true })
+     .then(console.log('usuario do facebook adicionado com sucesso'))
+        .catch((err) => console.log('Erro ao adicionar usuario do facebook', err))
+}
 
 var adicionaUsuario = function (usuario) {
     usuarioModel.findOneAndUpdate({ celular: usuario.celular }, usuario, { upsert: true })
@@ -38,7 +51,14 @@ var listarTodosUsuarios = function () {
         .then((info) => console.log('\n\n', info, '\n\n'))
 }
 
+var listarTodosUsuariosFacebook = function () {
+    return usuarioFacebookModel.find()
+    
+}
+
 module.exports = {
+    listarTodosUsuariosFacebook: listarTodosUsuariosFacebook,
+    adicionaUsuarioFacebook: adicionaUsuarioFacebook,
     adicionaUsuario: adicionaUsuario,
     listarTodosUsuarios: listarTodosUsuarios
 }

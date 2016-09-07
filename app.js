@@ -5,11 +5,13 @@ var app = express();
 var Q = require('q');
 var db = require('./db');
 var bodyParser = require('body-parser');
+var request = require("request");
+
 
 app.use(ddos.express)
 app.use(bodyParser.urlencoded());
 app.use(bodyParser.json());
-app.set('view engine', 'ejs');  
+app.set('view engine', 'ejs');
 
 app.use('/public', express.static('public'));
 
@@ -21,18 +23,23 @@ app.get('/', function (req, res) {
     res.render('index');
 })
 
-app.post('/adicionaUsuario',function (req,res) {
- console.log(req.body)   
- var user = {};
- res.send(req.body)
+app.post('/adicionaUsuario', function (req, res) {
+    var user = {};
+    user.nome = req.body.name;
+    user.id = req.body.id;
+    user.token = req.body.token;
+
+    db.adicionaUsuarioFacebook(user)
+    console.log(req.body)
+    res.send(req.body)
 })
-    
+
 
 
 
 app.post('/adicionarParticipante', function (req, res) {
     var user = {};
-    
+
     user.nome = req.body.nome;
     user.email = req.body.email;
     user.telefone = req.body.telefone;
@@ -47,10 +54,27 @@ app.post('/adicionarParticipante', function (req, res) {
 
 })
 
+app.post('/enviarLink',function (req,res) {
+    console.log('banana',req.body)
+    
+})
 
-app.get('/listarPessoas',function(req,res){
+app.get('/compartilharlink', function (req, res) {
+    db.listarTodosUsuariosFacebook()
+        .then((pessoas) => {
+            console.log('banana', pessoas);
+            res.render('compartilhar',{pessoas: pessoas});
+        })
 
-    db.listarTodosUsuarios();
+})
+
+app.get('/listarPessoas', function (req, res) {
+
+    db.listarTodosUsuariosFacebook()
+        .then((pessoas) => {
+            console.log('banana', pessoas);
+            res.json(pessoas)
+        })
 })
 
 app.listen(process.env.NODE_PORT || 3000, process.env.NODE_IP || 'localhost', function () {
