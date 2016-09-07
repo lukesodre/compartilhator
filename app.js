@@ -115,6 +115,6 @@ app.get('/listarPessoas', function (req, res) {
         })
 })
 
-app.listen(process.env.NODE_PORT || 3000, process.env.NODE_IP || 'localhost', function () {
+app.listen(process.env.NODE_PORT || 3000, function () {
     console.log(`Express Application worker ${process.pid} started...`);
 });
