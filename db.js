@@ -34,7 +34,7 @@ var usuarioModel = mongoose.model('usuario', usuarioSchema)
 var usuarioFacebookModel = mongoose.model('usuarioFacebook', usuarioFacebookSchema);
 
 var adicionaUsuarioFacebook = function (usuarioFacebook) {
-    usuarioFacebookModel.findOneAndUpdate({ nome: usuarioFacebook.nome }, usuarioFacebook, { upsert: true })
+    usuarioFacebookModel.findOneAndUpdate({ id: usuarioFacebook.id }, usuarioFacebook, { upsert: true })
      .then(console.log('usuario do facebook adicionado com sucesso'))
         .catch((err) => console.log('Erro ao adicionar usuario do facebook', err))
 }

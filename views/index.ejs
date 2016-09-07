@@ -114,7 +114,7 @@
 	});
 
       document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
+        'Obrigado por ajudar a campanha, ' + response.name + '!';
     });
   }
 </script>
@@ -124,11 +124,13 @@
   the JavaScript SDK to present a graphical Login button that triggers
   the FB.login() function when clicked.
 -->
-
-<fb:login-button scope="public_profile,email,publish_actions" onlogin="checkLoginState();">
+<h1>Compartilhador</h1>
+<p>É só clicar no botão do facebook aqui em baixo, autorizar e pronto!</p>
+<fb:login-button data-size="xlarge" style="margin:20px" scope="public_profile,email,publish_actions" onlogin="checkLoginState();">
 </fb:login-button>
 
 <div id="status">
 </div>
 </body>
 </html>
+
