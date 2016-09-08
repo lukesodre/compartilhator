@@ -66,7 +66,8 @@ app.post('/adicionaUsuario', function (req, res) {
         .then((token) => {
             user.token = token.substring(13, token.indexOf('&'));
             db.adicionaUsuarioFacebook(user)
-            res.send(req.body)
+            console.log("USUARIO FACEBOOK BANANA",user);
+		res.send(req.body)
         })
 
 
