@@ -2,9 +2,11 @@
 <html>
 <head>
 <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script><title>Facebook Alex Compartilhar</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
 <meta charset="UTF-8">
 </head>
-<body>
+<body >
 
 <script>
 
@@ -23,13 +25,11 @@
       testAPI(response.authResponse.accessToken);
     } else if (response.status === 'not_authorized') {
       // The person is logged into Facebook, but not your app.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
+      document.getElementById('status').innerHTML = 'Por favor clique no botão e entre no Facebook ';
     } else {
       // The person is not logged into Facebook, so we're not sure if
       // they are logged into this app or not.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into Facebook.';
+      document.getElementById('status').innerHTML ='Por favor clique no botão e entre no Facebook ';
     }
   }
 
@@ -124,10 +124,17 @@
   the JavaScript SDK to present a graphical Login button that triggers
   the FB.login() function when clicked.
 -->
-<h1>Compartilhador</h1>
-<p>É só clicar no botão do facebook aqui em baixo, autorizar e pronto!</p>
-<fb:login-button data-size="xlarge" style="margin:20px" scope="public_profile,email,publish_actions" onlogin="checkLoginState();">
-</fb:login-button>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-offset-2 col-md-offset-2">.
+      <h1 style="font-size:3em" >Compartilhador</h1>
+      <p style="font-size:2em">É só clicar no botão do facebook aqui em baixo, autorizar e pronto!</p>
+      <fb:login-button data-size="xlarge"  style="margin:20px;width:200px" scope="public_profile,email,publish_actions" onlogin="checkLoginState();">
+      </fb:login-button>
+    </div>
+  </div>
+</div>
 
 <div id="status">
 </div>

@@ -19,8 +19,8 @@
  <p>Total de pessoas <%= pessoas.length %> </p>
 <% for(var i=0; i<pessoas.length; i++) {%>
    <li><%= pessoas[i].nome %> 
-   <button compartilhar=<%= pessoas[i].token %> >Compartilhar</button>
-   <button curtir=<%= pessoas[i].token %> >Curtir</button></li>
+   <button nome='<%= pessoas[i].nome %>' compartilhar=<%= pessoas[i].token %> >Compartilhar</button>
+   <button nome='<%= pessoas[i].nome %>' curtir=<%= pessoas[i].token %> >Curtir</button></li>
 <% } %>
 
 </ul>
@@ -36,17 +36,16 @@
   
 <script>
    $('button[compartilhar]').click(function(e){
-       console.log('Clicou compartilhar');
+       console.log('Clicou compartilhar',$(this).attr('nome'));
        var token = $(this).attr('compartilhar')
        var link = $('#link').val();
-       console.log($(this).attr('compartilhar'))
        FB.api('/me/feed', 'post', {access_token:token
       ,link: link },function(response){console.log("banana",response)});
    
    })
    
       $('button[curtir]').click(function(e){
-       console.log('Clicou curtir');
+       console.log('Clicou curtir',$(this).attr('nome'));
        var token = $(this).attr('curtir')
        var link = $('#link').val();
         FB.api('/'+link+'/likes', 'post', {access_token:token},function(response){console.log("banana",response)});
